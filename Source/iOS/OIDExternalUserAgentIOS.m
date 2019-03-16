@@ -65,7 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
   NSURL *requestURL = [request externalUserAgentRequestURL];
 
   // iOS 12 and later, use ASWebAuthenticationSession
-  if (@available(iOS 12.0, *)) {
+  // L4C: Immer SFSafariViewController verwenden
+  /* if (@available(iOS 12.0, *)) {
     __weak OIDExternalUserAgentIOS *weakSelf = self;
     NSString *redirectScheme = request.redirectScheme;
     ASWebAuthenticationSession *authenticationVC =
@@ -117,7 +118,7 @@ NS_ASSUME_NONNULL_BEGIN
     _authenticationVC = authenticationVC;
     openedSafari = [authenticationVC start];
   // iOS 9 and 10, use SFSafariViewController
-  } else if (@available(iOS 9.0, *)) {
+  } else */ if (@available(iOS 9.0, *)) {
     SFSafariViewController *safariVC =
         [[SFSafariViewController alloc] initWithURL:requestURL];
     safariVC.delegate = self;
@@ -154,7 +155,8 @@ NS_ASSUME_NONNULL_BEGIN
   
   [self cleanUp];
   
-  if (@available(iOS 12.0, *)) {
+  // L4C: Immer SFSafariViewController verwenden
+  /*if (@available(iOS 12.0, *)) {
     // dismiss the ASWebAuthenticationSession
     [webAuthenticationVC cancel];
     if (completion) completion();
@@ -162,7 +164,7 @@ NS_ASSUME_NONNULL_BEGIN
     // dismiss the SFAuthenticationSession
     [authenticationVC cancel];
     if (completion) completion();
-  } else if (@available(iOS 9.0, *)) {
+  } else */ if (@available(iOS 9.0, *)) {
     // dismiss the SFSafariViewController
     if (safariVC) {
       [safariVC dismissViewControllerAnimated:YES completion:completion];
