@@ -432,11 +432,12 @@ static const NSUInteger kExpiryTimeTolerance = 60;
   if (!_refreshToken) {
     [OIDErrorUtilities raiseException:kRefreshTokenRequestException];
   }
+  // L4C: Groundspeak will auch hier die Redirect URL
   return [[OIDTokenRequest alloc]
       initWithConfiguration:_lastAuthorizationResponse.request.configuration
                   grantType:OIDGrantTypeRefreshToken
           authorizationCode:nil
-                redirectURL:nil
+                redirectURL:_lastAuthorizationResponse.request.redirectURL
                    clientID:_lastAuthorizationResponse.request.clientID
                clientSecret:_lastAuthorizationResponse.request.clientSecret
                       scope:nil
