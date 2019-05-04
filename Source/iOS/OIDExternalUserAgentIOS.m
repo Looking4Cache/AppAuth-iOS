@@ -19,7 +19,8 @@
 #import "OIDExternalUserAgentIOS.h"
 
 #import <SafariServices/SafariServices.h>
-#import <AuthenticationServices/AuthenticationServices.h>
+// L4C: Immer SFSafariViewController verwenden
+// #import <AuthenticationServices/AuthenticationServices.h>
 
 #import "OIDErrorUtilities.h"
 #import "OIDExternalUserAgentSession.h"
@@ -38,8 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpartial-availability"
   __weak SFSafariViewController *_safariVC;
-  SFAuthenticationSession *_authenticationVC;
-  ASWebAuthenticationSession *_webAuthenticationVC;
+  // L4C: Immer SFSafariViewController verwenden
+  // SFAuthenticationSession *_authenticationVC;
+  // ASWebAuthenticationSession *_webAuthenticationVC;
 #pragma clang diagnostic pop
 }
 
@@ -149,8 +151,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpartial-availability"
   SFSafariViewController *safariVC = _safariVC;
-  SFAuthenticationSession *authenticationVC = _authenticationVC;
-  ASWebAuthenticationSession *webAuthenticationVC = _webAuthenticationVC;
+  // L4C: Immer SFSafariViewController verwenden
+  //SFAuthenticationSession *authenticationVC = _authenticationVC;
+  //ASWebAuthenticationSession *webAuthenticationVC = _webAuthenticationVC;
 #pragma clang diagnostic pop
   
   [self cleanUp];
@@ -180,7 +183,8 @@ NS_ASSUME_NONNULL_BEGIN
   // The weak references to |_safariVC| and |_session| are set to nil to avoid accidentally using
   // them while not in an authorization flow.
   _safariVC = nil;
-  _authenticationVC = nil;
+  // L4C: Immer SFSafariViewController verwenden
+  //_authenticationVC = nil;
   _session = nil;
   _externalUserAgentFlowInProgress = NO;
 }
