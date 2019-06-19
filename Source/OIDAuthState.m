@@ -542,7 +542,7 @@ static const NSUInteger kExpiryTimeTolerance = 60;
         actionToProcess.action(self.accessToken, self.idToken, error);
       });
     }
-  }];
+  } dispatchQueue:dispatchQueue];
 }
 
 #pragma mark -

@@ -135,6 +135,17 @@ typedef void (^OIDRegistrationCompletion)(OIDRegistrationResponse *_Nullable reg
     originalAuthorizationResponse:(OIDAuthorizationResponse *_Nullable)authorizationResponse
                          callback:(OIDTokenCallback)callback;
 
+/*! @brief Performs a token request.
+ @param request The token request.
+ @param authorizationResponse The original authorization response related to this token request.
+ @param callback The method called when the request has completed or failed.
+ @param dispatchQueue The quere where the callback should dispatched to.
+ */
++ (void)performTokenRequest:(OIDTokenRequest *)request
+originalAuthorizationResponse:(OIDAuthorizationResponse *_Nullable)authorizationResponse
+                   callback:(OIDTokenCallback)callback
+              dispatchQueue:(dispatch_queue_t)dispatchQueue;
+
 /*! @brief Performs a registration request.
     @param request The registration request.
     @param completion The method called when the request has completed or failed.
